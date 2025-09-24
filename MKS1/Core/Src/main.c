@@ -91,7 +91,17 @@ int main(void)
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
 
+
   /* USER CODE END 2 */
+  uint8_t morse[32] = {
+      1,0,1,0,1,0,
+      0,0,
+      1,1,1,0,1,1,1,0,1,1,1,0,
+      0,0,
+      1,0,1,0,1,0
+  };
+
+  uint32_t morse_opt = 0b10101000111011101110001010100000;
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
@@ -100,6 +110,18 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+
+	  for (int i = 31; i >= 0; i--) {
+	          uint8_t bit = (morse_opt >> i) & 0x01;
+	          if (bit) {
+	        	  LL_GPIO_SetOutputPin(LD2_GPIO_Port, LD2_Pin); // LED ON
+	          } else {
+	        	  LL_GPIO_ResetOutputPin(LD2_GPIO_Port, LD2_Pin); // LED OFF
+	          }
+	          LL_mDelay(200); // 1 unit time
+	      }
+
+	    LL_mDelay(1000);
   }
   /* USER CODE END 3 */
 }
