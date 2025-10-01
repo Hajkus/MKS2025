@@ -39,13 +39,13 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  17 .debug_line   00003efb  00000000  00000000  0001150b  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    00034417  00000000  00000000  00015406  2**0
+ 18 .debug_str    00034418  00000000  00000000  00015406  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  0004981d  2**0
+ 19 .comment      00000043  00000000  00000000  0004981e  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00001040  00000000  00000000  00049860  2**2
+ 20 .debug_frame  00001040  00000000  00000000  00049864  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 0000004e  00000000  00000000  0004a8a0  2**0
+ 21 .debug_line_str 0000004e  00000000  00000000  0004a8a4  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -1102,121 +1102,121 @@ void button(void)
     if(Tick > debounce + DBNC){
  8000694:	4b31      	ldr	r3, [pc, #196]	@ (800075c <button+0xcc>)
  8000696:	681b      	ldr	r3, [r3, #0]
- 8000698:	1d5a      	adds	r2, r3, #5
- 800069a:	4b31      	ldr	r3, [pc, #196]	@ (8000760 <button+0xd0>)
- 800069c:	681b      	ldr	r3, [r3, #0]
- 800069e:	429a      	cmp	r2, r3
- 80006a0:	d22b      	bcs.n	80006fa <button+0x6a>
+ 8000698:	3332      	adds	r3, #50	@ 0x32
+ 800069a:	001a      	movs	r2, r3
+ 800069c:	4b30      	ldr	r3, [pc, #192]	@ (8000760 <button+0xd0>)
+ 800069e:	681b      	ldr	r3, [r3, #0]
+ 80006a0:	429a      	cmp	r2, r3
+ 80006a2:	d22b      	bcs.n	80006fc <button+0x6c>
     	debounce = Tick;
- 80006a2:	4b2f      	ldr	r3, [pc, #188]	@ (8000760 <button+0xd0>)
- 80006a4:	681a      	ldr	r2, [r3, #0]
- 80006a6:	4b2d      	ldr	r3, [pc, #180]	@ (800075c <button+0xcc>)
- 80006a8:	601a      	str	r2, [r3, #0]
+ 80006a4:	4b2e      	ldr	r3, [pc, #184]	@ (8000760 <button+0xd0>)
+ 80006a6:	681a      	ldr	r2, [r3, #0]
+ 80006a8:	4b2c      	ldr	r3, [pc, #176]	@ (800075c <button+0xcc>)
+ 80006aa:	601a      	str	r2, [r3, #0]
     	debounce_s2 <<= 1;
- 80006aa:	4b2e      	ldr	r3, [pc, #184]	@ (8000764 <button+0xd4>)
- 80006ac:	881b      	ldrh	r3, [r3, #0]
- 80006ae:	18db      	adds	r3, r3, r3
- 80006b0:	b29a      	uxth	r2, r3
- 80006b2:	4b2c      	ldr	r3, [pc, #176]	@ (8000764 <button+0xd4>)
- 80006b4:	801a      	strh	r2, [r3, #0]
+ 80006ac:	4b2d      	ldr	r3, [pc, #180]	@ (8000764 <button+0xd4>)
+ 80006ae:	881b      	ldrh	r3, [r3, #0]
+ 80006b0:	18db      	adds	r3, r3, r3
+ 80006b2:	b29a      	uxth	r2, r3
+ 80006b4:	4b2b      	ldr	r3, [pc, #172]	@ (8000764 <button+0xd4>)
+ 80006b6:	801a      	strh	r2, [r3, #0]
     	if (LL_GPIO_IsInputPinSet(S2_GPIO_Port, S2_Pin) == 0)
- 80006b6:	4b2c      	ldr	r3, [pc, #176]	@ (8000768 <button+0xd8>)
- 80006b8:	2101      	movs	r1, #1
- 80006ba:	0018      	movs	r0, r3
- 80006bc:	f7ff ff8a 	bl	80005d4 <LL_GPIO_IsInputPinSet>
- 80006c0:	1e03      	subs	r3, r0, #0
- 80006c2:	d106      	bne.n	80006d2 <button+0x42>
+ 80006b8:	4b2b      	ldr	r3, [pc, #172]	@ (8000768 <button+0xd8>)
+ 80006ba:	2101      	movs	r1, #1
+ 80006bc:	0018      	movs	r0, r3
+ 80006be:	f7ff ff89 	bl	80005d4 <LL_GPIO_IsInputPinSet>
+ 80006c2:	1e03      	subs	r3, r0, #0
+ 80006c4:	d106      	bne.n	80006d4 <button+0x44>
     		debounce_s2 |= 0x0001;
- 80006c4:	4b27      	ldr	r3, [pc, #156]	@ (8000764 <button+0xd4>)
- 80006c6:	881b      	ldrh	r3, [r3, #0]
- 80006c8:	2201      	movs	r2, #1
- 80006ca:	4313      	orrs	r3, r2
- 80006cc:	b29a      	uxth	r2, r3
- 80006ce:	4b25      	ldr	r3, [pc, #148]	@ (8000764 <button+0xd4>)
- 80006d0:	801a      	strh	r2, [r3, #0]
+ 80006c6:	4b27      	ldr	r3, [pc, #156]	@ (8000764 <button+0xd4>)
+ 80006c8:	881b      	ldrh	r3, [r3, #0]
+ 80006ca:	2201      	movs	r2, #1
+ 80006cc:	4313      	orrs	r3, r2
+ 80006ce:	b29a      	uxth	r2, r3
+ 80006d0:	4b24      	ldr	r3, [pc, #144]	@ (8000764 <button+0xd4>)
+ 80006d2:	801a      	strh	r2, [r3, #0]
 
     	debounce_s1 <<= 1;
- 80006d2:	4b26      	ldr	r3, [pc, #152]	@ (800076c <button+0xdc>)
- 80006d4:	881b      	ldrh	r3, [r3, #0]
- 80006d6:	18db      	adds	r3, r3, r3
- 80006d8:	b29a      	uxth	r2, r3
- 80006da:	4b24      	ldr	r3, [pc, #144]	@ (800076c <button+0xdc>)
- 80006dc:	801a      	strh	r2, [r3, #0]
+ 80006d4:	4b25      	ldr	r3, [pc, #148]	@ (800076c <button+0xdc>)
+ 80006d6:	881b      	ldrh	r3, [r3, #0]
+ 80006d8:	18db      	adds	r3, r3, r3
+ 80006da:	b29a      	uxth	r2, r3
+ 80006dc:	4b23      	ldr	r3, [pc, #140]	@ (800076c <button+0xdc>)
+ 80006de:	801a      	strh	r2, [r3, #0]
     	if (LL_GPIO_IsInputPinSet(S2_GPIO_Port, S1_Pin) == 0)
- 80006de:	4b22      	ldr	r3, [pc, #136]	@ (8000768 <button+0xd8>)
- 80006e0:	2102      	movs	r1, #2
- 80006e2:	0018      	movs	r0, r3
- 80006e4:	f7ff ff76 	bl	80005d4 <LL_GPIO_IsInputPinSet>
- 80006e8:	1e03      	subs	r3, r0, #0
- 80006ea:	d106      	bne.n	80006fa <button+0x6a>
+ 80006e0:	4b21      	ldr	r3, [pc, #132]	@ (8000768 <button+0xd8>)
+ 80006e2:	2102      	movs	r1, #2
+ 80006e4:	0018      	movs	r0, r3
+ 80006e6:	f7ff ff75 	bl	80005d4 <LL_GPIO_IsInputPinSet>
+ 80006ea:	1e03      	subs	r3, r0, #0
+ 80006ec:	d106      	bne.n	80006fc <button+0x6c>
     		debounce_s1 |= 0x0001;
- 80006ec:	4b1f      	ldr	r3, [pc, #124]	@ (800076c <button+0xdc>)
- 80006ee:	881b      	ldrh	r3, [r3, #0]
- 80006f0:	2201      	movs	r2, #1
- 80006f2:	4313      	orrs	r3, r2
- 80006f4:	b29a      	uxth	r2, r3
- 80006f6:	4b1d      	ldr	r3, [pc, #116]	@ (800076c <button+0xdc>)
- 80006f8:	801a      	strh	r2, [r3, #0]
+ 80006ee:	4b1f      	ldr	r3, [pc, #124]	@ (800076c <button+0xdc>)
+ 80006f0:	881b      	ldrh	r3, [r3, #0]
+ 80006f2:	2201      	movs	r2, #1
+ 80006f4:	4313      	orrs	r3, r2
+ 80006f6:	b29a      	uxth	r2, r3
+ 80006f8:	4b1c      	ldr	r3, [pc, #112]	@ (800076c <button+0xdc>)
+ 80006fa:	801a      	strh	r2, [r3, #0]
     }
 
     if (debounce_s2 == 0x7FFF) {
- 80006fa:	4b1a      	ldr	r3, [pc, #104]	@ (8000764 <button+0xd4>)
- 80006fc:	881b      	ldrh	r3, [r3, #0]
- 80006fe:	4a1c      	ldr	r2, [pc, #112]	@ (8000770 <button+0xe0>)
- 8000700:	4293      	cmp	r3, r2
- 8000702:	d10b      	bne.n	800071c <button+0x8c>
+ 80006fc:	4b19      	ldr	r3, [pc, #100]	@ (8000764 <button+0xd4>)
+ 80006fe:	881b      	ldrh	r3, [r3, #0]
+ 8000700:	4a1b      	ldr	r2, [pc, #108]	@ (8000770 <button+0xe0>)
+ 8000702:	4293      	cmp	r3, r2
+ 8000704:	d10b      	bne.n	800071e <button+0x8e>
         off_time = Tick + LED_TIME_SHORT;
- 8000704:	4b16      	ldr	r3, [pc, #88]	@ (8000760 <button+0xd0>)
- 8000706:	681b      	ldr	r3, [r3, #0]
- 8000708:	3364      	adds	r3, #100	@ 0x64
- 800070a:	001a      	movs	r2, r3
- 800070c:	4b19      	ldr	r3, [pc, #100]	@ (8000774 <button+0xe4>)
- 800070e:	601a      	str	r2, [r3, #0]
+ 8000706:	4b16      	ldr	r3, [pc, #88]	@ (8000760 <button+0xd0>)
+ 8000708:	681b      	ldr	r3, [r3, #0]
+ 800070a:	3364      	adds	r3, #100	@ 0x64
+ 800070c:	001a      	movs	r2, r3
+ 800070e:	4b19      	ldr	r3, [pc, #100]	@ (8000774 <button+0xe4>)
+ 8000710:	601a      	str	r2, [r3, #0]
         LL_GPIO_SetOutputPin(LED2_GPIO_Port, LED2_Pin);
- 8000710:	4b19      	ldr	r3, [pc, #100]	@ (8000778 <button+0xe8>)
- 8000712:	2101      	movs	r1, #1
- 8000714:	0018      	movs	r0, r3
- 8000716:	f7ff ff6f 	bl	80005f8 <LL_GPIO_SetOutputPin>
- 800071a:	e010      	b.n	800073e <button+0xae>
+ 8000712:	4b19      	ldr	r3, [pc, #100]	@ (8000778 <button+0xe8>)
+ 8000714:	2101      	movs	r1, #1
+ 8000716:	0018      	movs	r0, r3
+ 8000718:	f7ff ff6e 	bl	80005f8 <LL_GPIO_SetOutputPin>
+ 800071c:	e010      	b.n	8000740 <button+0xb0>
     } else if (debounce_s1 == 0x7FFF) {
- 800071c:	4b13      	ldr	r3, [pc, #76]	@ (800076c <button+0xdc>)
- 800071e:	881b      	ldrh	r3, [r3, #0]
- 8000720:	4a13      	ldr	r2, [pc, #76]	@ (8000770 <button+0xe0>)
- 8000722:	4293      	cmp	r3, r2
- 8000724:	d10b      	bne.n	800073e <button+0xae>
+ 800071e:	4b13      	ldr	r3, [pc, #76]	@ (800076c <button+0xdc>)
+ 8000720:	881b      	ldrh	r3, [r3, #0]
+ 8000722:	4a13      	ldr	r2, [pc, #76]	@ (8000770 <button+0xe0>)
+ 8000724:	4293      	cmp	r3, r2
+ 8000726:	d10b      	bne.n	8000740 <button+0xb0>
         off_time = Tick + LED_TIME_LONG;
- 8000726:	4b0e      	ldr	r3, [pc, #56]	@ (8000760 <button+0xd0>)
- 8000728:	681b      	ldr	r3, [r3, #0]
- 800072a:	22fa      	movs	r2, #250	@ 0xfa
- 800072c:	0092      	lsls	r2, r2, #2
- 800072e:	189a      	adds	r2, r3, r2
- 8000730:	4b10      	ldr	r3, [pc, #64]	@ (8000774 <button+0xe4>)
- 8000732:	601a      	str	r2, [r3, #0]
+ 8000728:	4b0d      	ldr	r3, [pc, #52]	@ (8000760 <button+0xd0>)
+ 800072a:	681b      	ldr	r3, [r3, #0]
+ 800072c:	22fa      	movs	r2, #250	@ 0xfa
+ 800072e:	0092      	lsls	r2, r2, #2
+ 8000730:	189a      	adds	r2, r3, r2
+ 8000732:	4b10      	ldr	r3, [pc, #64]	@ (8000774 <button+0xe4>)
+ 8000734:	601a      	str	r2, [r3, #0]
         LL_GPIO_SetOutputPin(LED2_GPIO_Port, LED2_Pin);
- 8000734:	4b10      	ldr	r3, [pc, #64]	@ (8000778 <button+0xe8>)
- 8000736:	2101      	movs	r1, #1
- 8000738:	0018      	movs	r0, r3
- 800073a:	f7ff ff5d 	bl	80005f8 <LL_GPIO_SetOutputPin>
+ 8000736:	4b10      	ldr	r3, [pc, #64]	@ (8000778 <button+0xe8>)
+ 8000738:	2101      	movs	r1, #1
+ 800073a:	0018      	movs	r0, r3
+ 800073c:	f7ff ff5c 	bl	80005f8 <LL_GPIO_SetOutputPin>
     }
 
     if (Tick > off_time) {
- 800073e:	4b08      	ldr	r3, [pc, #32]	@ (8000760 <button+0xd0>)
- 8000740:	681a      	ldr	r2, [r3, #0]
- 8000742:	4b0c      	ldr	r3, [pc, #48]	@ (8000774 <button+0xe4>)
- 8000744:	681b      	ldr	r3, [r3, #0]
- 8000746:	429a      	cmp	r2, r3
- 8000748:	d904      	bls.n	8000754 <button+0xc4>
+ 8000740:	4b07      	ldr	r3, [pc, #28]	@ (8000760 <button+0xd0>)
+ 8000742:	681a      	ldr	r2, [r3, #0]
+ 8000744:	4b0b      	ldr	r3, [pc, #44]	@ (8000774 <button+0xe4>)
+ 8000746:	681b      	ldr	r3, [r3, #0]
+ 8000748:	429a      	cmp	r2, r3
+ 800074a:	d904      	bls.n	8000756 <button+0xc6>
         LL_GPIO_ResetOutputPin(LED2_GPIO_Port, LED2_Pin);
- 800074a:	4b0b      	ldr	r3, [pc, #44]	@ (8000778 <button+0xe8>)
- 800074c:	2101      	movs	r1, #1
- 800074e:	0018      	movs	r0, r3
- 8000750:	f7ff ff5e 	bl	8000610 <LL_GPIO_ResetOutputPin>
+ 800074c:	4b0a      	ldr	r3, [pc, #40]	@ (8000778 <button+0xe8>)
+ 800074e:	2101      	movs	r1, #1
+ 8000750:	0018      	movs	r0, r3
+ 8000752:	f7ff ff5d 	bl	8000610 <LL_GPIO_ResetOutputPin>
     }
 }
- 8000754:	46c0      	nop			@ (mov r8, r8)
- 8000756:	46bd      	mov	sp, r7
- 8000758:	bd80      	pop	{r7, pc}
- 800075a:	46c0      	nop			@ (mov r8, r8)
+ 8000756:	46c0      	nop			@ (mov r8, r8)
+ 8000758:	46bd      	mov	sp, r7
+ 800075a:	bd80      	pop	{r7, pc}
  800075c:	2000002c 	.word	0x2000002c
  8000760:	20000024 	.word	0x20000024
  8000764:	20000000 	.word	0x20000000

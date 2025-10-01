@@ -34,7 +34,7 @@
 	#define LED_TIME_BLINK 300
 	#define LED_TIME_SHORT 100
 	#define LED_TIME_LONG  1000
-	#define DBNC  5
+	#define DBNC  50
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
