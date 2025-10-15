@@ -983,7 +983,7 @@ void sct_value(uint16_t value){
  8000650:	701a      	strb	r2, [r3, #0]
 
     // Merge digits
-    reg |= reg_values[0][digit2]; // stovky
+    reg |= reg_values[0][digit2]; // hundreds
  8000652:	187b      	adds	r3, r7, r1
  8000654:	781a      	ldrb	r2, [r3, #0]
  8000656:	4b10      	ldr	r3, [pc, #64]	@ (8000698 <sct_value+0xb0>)
@@ -992,7 +992,7 @@ void sct_value(uint16_t value){
  800065c:	68fa      	ldr	r2, [r7, #12]
  800065e:	4313      	orrs	r3, r2
  8000660:	60fb      	str	r3, [r7, #12]
-    reg |= reg_values[1][digit1]; // desítky
+    reg |= reg_values[1][digit1]; // tens
  8000662:	197b      	adds	r3, r7, r5
  8000664:	781a      	ldrb	r2, [r3, #0]
  8000666:	4b0c      	ldr	r3, [pc, #48]	@ (8000698 <sct_value+0xb0>)
@@ -1002,7 +1002,7 @@ void sct_value(uint16_t value){
  800066e:	68fa      	ldr	r2, [r7, #12]
  8000670:	4313      	orrs	r3, r2
  8000672:	60fb      	str	r3, [r7, #12]
-    reg |= reg_values[2][digit0]; // jednotky
+    reg |= reg_values[2][digit0]; // units
  8000674:	193b      	adds	r3, r7, r4
  8000676:	781a      	ldrb	r2, [r3, #0]
  8000678:	4b07      	ldr	r3, [pc, #28]	@ (8000698 <sct_value+0xb0>)
